@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    environment:
+      SOLANA_CLUSTER: ${SOLANA_CLUSTER}
+      SOLANA_RPC_URL: ${SOLANA_RPC_URL}
+      MINT: ${MINT}
+      MINT_SYMBOL: ${MINT_SYMBOL}
+      PUBLIC_URL: ${PUBLIC_URL}
+      SPONSOR_SECRET_KEY: ${SPONSOR_SECRET_KEY}
+      SPONSOR_PER_WALLET_PER_HOUR: ${SPONSOR_PER_WALLET_PER_HOUR}
+      SPONSOR_PER_DAY: ${SPONSOR_PER_DAY}
+      TEST_MINT_AUTHORITY: ${TEST_MINT_AUTHORITY}
+      TRUST_PROXY: "1"
+      SERVICE_FQDN_WEB: ${SERVICE_FQDN_WEB}
+    volumes:
+      - data:/data
+
+volumes:
+  data:

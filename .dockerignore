@@ -1,0 +1,10 @@
+node_modules
+data
+.env
+.env.*
+anchor/target/deploy
+anchor/target/release
+anchor/target/debug
+anchor/target/sbpf-solana-solana
+tests
+scripts

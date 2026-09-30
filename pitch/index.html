@@ -1,0 +1,2649 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Headcount Pitch</title>
+    <meta
+      name="description"
+      content="Headcount: the event happens when the headcount does. All-or-nothing events on Solana, live on devnet."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Headcount · the event happens when the headcount does"
+    />
+    <meta
+      property="og:description"
+      content="All-or-nothing events on Solana: commit by a deadline, enough people means GO, otherwise everyone gets their money back. Live on devnet."
+    />
+    <meta property="og:url" content="https://headcount.sorevo.de/pitch/" />
+    <meta
+      property="og:image"
+      content="https://headcount.sorevo.de/pitch/og.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/brand/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f2ede1;
+        --paper-2: #e8e0cc;
+        --ink: #12110f;
+        --ink-2: #2b2925;
+        --muted: #6d665a;
+        --line: #d5cab2;
+        --card: #fffcf5;
+        --open: #2a4dff;
+        --open-2: #9fb0ff;
+        --go: #b9f43c;
+        --go-ink: #0f1a00;
+        --nogo: #ff4a1d;
+        --display: "Anton", Impact, "Arial Narrow", sans-serif;
+        --sans:
+          "Bricolage Grotesque", ui-sans-serif, system-ui, "Segoe UI",
+          sans-serif;
+        --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+        --shadow:
+          0 2px 0 rgba(0, 0, 0, 0.04), 0 40px 80px -40px rgba(50, 35, 5, 0.55);
+      }
+      @page {
+        size: 1920px 1080px;
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #6d665a;
+      }
+      body {
+        font: 400 28px/1.4 var(--sans);
+        color: var(--ink);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .slide a.u {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 5px;
+      }
+      .slide {
+        width: 1920px;
+        height: 1080px;
+        position: relative;
+        overflow: hidden;
+        background: var(--paper);
+        background-image: radial-gradient(
+          circle at 1.5px 1.5px,
+          rgba(18, 17, 15, 0.075) 1.5px,
+          transparent 0
+        );
+        background-size: 34px 34px;
+        padding: 96px 128px 88px;
+        page-break-after: always;
+        break-after: page;
+        margin: 0 auto 40px;
+      }
+      .slide:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+      @media print {
+        html,
+        body {
+          background: none;
+        }
+        .slide {
+          margin: 0;
+        }
+      }
+      body.single {
+        background: var(--paper);
+      }
+      body.single .slide {
+        display: none;
+        margin: 0;
+      }
+      body.single .slide.on {
+        display: block;
+      }
+      .dark {
+        background-color: var(--ink);
+        color: var(--paper);
+        background-image: radial-gradient(
+          circle at 1.5px 1.5px,
+          rgba(242, 237, 225, 0.07) 1.5px,
+          transparent 0
+        );
+      }
+      .dark .kicker {
+        color: #a09a8b;
+      }
+
+      .top {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        top: 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .top img {
+        height: 40px;
+        display: block;
+      }
+      .pg {
+        font: 600 18px/1 var(--mono);
+        letter-spacing: 0.14em;
+        color: var(--muted);
+      }
+      .kicker {
+        font: 600 22px/1 var(--mono);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 44px 0 26px;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      .h {
+        font: 400 112px/0.92 var(--display);
+        text-transform: uppercase;
+        letter-spacing: -0.005em;
+      }
+      .h-md {
+        font: 400 88px/0.95 var(--display);
+        text-transform: uppercase;
+      }
+      .sub {
+        margin-top: 26px;
+        font: 500 32px/1.35 var(--sans);
+        color: var(--ink-2);
+        max-width: 60ch;
+      }
+      .dark .sub {
+        color: #d8d1c1;
+      }
+      .sub b {
+        color: var(--ink);
+        font-weight: 800;
+      }
+      .dark .sub b {
+        color: var(--go);
+      }
+      .hl {
+        background: var(--go);
+        color: var(--go-ink);
+        padding: 0 0.08em;
+        border-radius: 0.06em;
+        display: inline-block;
+        transform: rotate(var(--r, -2deg));
+        line-height: 0.9;
+      }
+      .st {
+        -webkit-text-stroke: 3px var(--ink);
+        color: transparent;
+      }
+      .dark .st {
+        -webkit-text-stroke-color: var(--paper);
+      }
+      .card {
+        background: var(--card);
+        border: 3px solid var(--ink);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font: 600 18px/1 var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 2px solid var(--ink);
+        white-space: nowrap;
+      }
+      .chip.open {
+        background: var(--open);
+        border-color: var(--open);
+        color: #fff;
+      }
+      .stamp {
+        font: 400 1em/1 var(--display);
+        letter-spacing: 0.06em;
+        border: 0.09em solid currentColor;
+        border-radius: 0.14em;
+        padding: 0.14em 0.3em 0.06em;
+        display: inline-block;
+        text-transform: uppercase;
+        transform: rotate(var(--r, 0deg));
+      }
+
+      /* bars: blue = not there yet, lime = cleared, striped = backer pledges (same colours as the app) */
+      .bar {
+        position: relative;
+        height: 40px;
+        border: 4px solid var(--ink);
+        border-radius: 999px;
+        background: var(--card);
+      }
+      .bar > i {
+        position: absolute;
+        inset: 0 auto 0 0;
+        border-radius: 999px;
+        background: var(--open);
+      }
+      .bar.done > i {
+        background: var(--go);
+      }
+      .bar > i.pl {
+        border-radius: 0 999px 999px 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          var(--open-2) 0 10px,
+          var(--open) 10px 20px
+        );
+        border-left: 3px solid var(--ink);
+      }
+      .bar > .tick {
+        position: absolute;
+        top: -16px;
+        bottom: -16px;
+        width: 6px;
+        margin-left: -3px;
+        background: var(--ink);
+        border-radius: 3px;
+      }
+      .bar > .tick::after {
+        content: attr(data-l);
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font: 600 20px/1 var(--mono);
+        letter-spacing: 0.12em;
+        white-space: nowrap;
+      }
+      .bar > .tick.end::after {
+        left: auto;
+        right: -3px;
+        transform: none;
+      }
+      .blbl {
+        display: flex;
+        justify-content: space-between;
+        font: 600 20px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 42px;
+      }
+      .blbl b {
+        color: var(--ink);
+      }
+      .legend {
+        display: flex;
+        gap: 30px;
+        font: 600 18px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .legend i {
+        width: 30px;
+        height: 16px;
+        border-radius: 99px;
+        display: inline-block;
+        border: 2px solid var(--ink);
+      }
+
+      .shot {
+        background: var(--card);
+        border: 3px solid var(--ink);
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .shot img {
+        display: block;
+        width: 100%;
+      }
+      .cap {
+        font: 600 18px/1.4 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 18px;
+      }
+
+      /* 1 title */
+      .s1 .inner {
+        padding-top: 44px;
+      }
+      .s1 .kicker {
+        margin-top: 0;
+      }
+      .s1 .logo {
+        width: 1180px;
+        display: block;
+        margin: 34px 0 60px;
+      }
+      .s1 .tag {
+        font: 800 70px/1.06 var(--sans);
+        letter-spacing: -0.025em;
+        max-width: 22ch;
+      }
+      .s1 .sub {
+        font-size: 30px;
+        max-width: 48ch;
+      }
+      .s1 .foot {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        bottom: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .s1 .by {
+        font: 600 22px/1.6 var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .s1 .by b {
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .s1 .vid {
+        display: inline-block;
+        margin-top: 8px;
+        background: var(--ink);
+        color: var(--go);
+        padding: 6px 12px;
+        border-radius: 8px;
+      }
+      .s1 .barwrap {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        top: 830px;
+      }
+      .s1 .count {
+        position: absolute;
+        right: 0;
+        bottom: 78px;
+        font: 400 120px/0.8 var(--display);
+        display: flex;
+        align-items: baseline;
+        gap: 18px;
+      }
+      .s1 .count em {
+        font: 600 26px/1.2 var(--mono);
+        font-style: normal;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .s1 .count em b {
+        color: var(--ink);
+      }
+      .s1 .bar > i {
+        width: 78%;
+      }
+      .s1 .gostamp {
+        --r: 9deg;
+        position: absolute;
+        right: 150px;
+        top: 400px;
+        font-size: 96px;
+        color: var(--go-ink);
+        background: var(--go);
+        border-color: var(--go-ink);
+        box-shadow: 8px 8px 0 var(--ink);
+      }
+
+      /* 2 problem */
+      .s2 .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 600px;
+        gap: 100px;
+        align-items: center;
+        height: 100%;
+      }
+      .s2 .big {
+        font: 400 150px/0.9 var(--display);
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .s2 .big span {
+        display: inline-block;
+      }
+      .s2 .big .red {
+        color: var(--nogo);
+      }
+      .s2 .lead {
+        margin-top: 44px;
+        font: 500 36px/1.35 var(--sans);
+        color: var(--ink-2);
+        max-width: 30ch;
+      }
+      .s2 .lead b {
+        color: var(--ink);
+      }
+      .dots {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 18px;
+      }
+      .dots i {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 4px dashed #b6ab93;
+      }
+      .dots i.in {
+        border: 4px solid var(--ink);
+        background: var(--ink);
+      }
+      .s2 .dlg {
+        display: flex;
+        gap: 40px;
+        margin-top: 40px;
+        font: 600 22px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .s2 .dlg span {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .s2 .dlg i {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .s2 .illu {
+        margin-top: 18px;
+        font: 600 17px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #a39b89;
+      }
+
+      /* 3 insight */
+      .s3 .kick {
+        font: 600 44px/1.3 var(--sans);
+        letter-spacing: -0.01em;
+        color: #d8d1c1;
+        margin-top: 84px;
+      }
+      .s3 .kick b {
+        color: var(--paper);
+        font-weight: 800;
+      }
+      .s3 .kick em {
+        font-style: normal;
+        color: var(--go);
+      }
+      .s3 .row {
+        display: flex;
+        gap: 26px;
+        flex-wrap: wrap;
+        margin: 44px 0 0;
+      }
+      .s3 .sticker {
+        font: 400 50px/1 var(--display);
+        text-transform: uppercase;
+        border: 4px solid var(--paper);
+        border-radius: 18px;
+        padding: 22px 28px 16px;
+        transform: rotate(var(--r));
+      }
+      .s3 .sticker:nth-child(1) {
+        --r: -2.5deg;
+      }
+      .s3 .sticker:nth-child(2) {
+        --r: 1.5deg;
+      }
+      .s3 .sticker:nth-child(3) {
+        --r: -1deg;
+      }
+      .s3 .punch {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        bottom: 96px;
+      }
+      .s3 .punch .h {
+        font-size: 118px;
+        line-height: 1.04;
+      }
+      .s3 .punch p {
+        margin-top: 30px;
+        font: 600 36px/1.3 var(--sans);
+        color: #d8d1c1;
+      }
+      .s3 .punch p b {
+        color: var(--go);
+        font-weight: 800;
+      }
+
+      /* 4 how */
+      .s4 .modes {
+        margin-top: 22px;
+        font: 600 28px/1.35 var(--sans);
+        color: var(--ink-2);
+      }
+      .s4 .modes b {
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .s4 .flow {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        top: 480px;
+        height: 540px;
+      }
+      .s4 .left {
+        position: absolute;
+        left: 0;
+        top: 30px;
+        width: 820px;
+      }
+      .s4 .bar {
+        margin-bottom: 58px;
+      }
+      .s4 .under {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+      .s4 .rule {
+        font: 600 20px/1 var(--mono);
+        letter-spacing: 0.12em;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 12px 14px;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+      .s4 .rule b {
+        color: var(--go);
+        font-weight: 600;
+      }
+      .s4 .opt {
+        font: 500 18px/1 var(--mono);
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-left: 10px;
+      }
+      .s4 svg.fork {
+        position: absolute;
+        left: 870px;
+        top: 0;
+        width: 200px;
+        height: 540px;
+        overflow: visible;
+      }
+      .s4 .out {
+        position: absolute;
+        right: 0;
+        width: 540px;
+        padding: 26px 36px 28px;
+        border-radius: 26px;
+        border: 3px solid var(--ink);
+        transform: rotate(var(--r, 0deg));
+      }
+      .s4 .out strong {
+        display: block;
+        font: 400 80px/0.9 var(--display);
+        text-transform: uppercase;
+      }
+      .s4 .out .if {
+        font: 600 20px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        opacity: 0.8;
+      }
+      .s4 .out p {
+        margin-top: 14px;
+        font: 600 26px/1.35 var(--sans);
+      }
+      .s4 .out.go {
+        --r: -1.4deg;
+        top: -40px;
+        background: var(--go);
+        color: var(--go-ink);
+        box-shadow: 10px 10px 0 var(--ink);
+      }
+      .s4 .out.nogo {
+        bottom: -30px;
+        background: var(--nogo);
+        color: #fff;
+      }
+
+      /* 5 deposit + door */
+      .s5 .wrap {
+        display: grid;
+        grid-template-columns: 1fr 720px;
+        gap: 90px;
+        margin-top: 40px;
+        align-items: start;
+      }
+      .steps {
+        display: grid;
+        gap: 30px;
+        margin-top: 6px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 26px;
+        align-items: start;
+      }
+      .step > b {
+        font: 400 62px/1 var(--display);
+        text-align: center;
+        border-radius: 16px;
+        padding: 11px 0 4px;
+      }
+      .step:nth-child(1) > b {
+        background: var(--open);
+        color: #fff;
+      }
+      .step:nth-child(2) > b {
+        background: var(--go);
+        color: var(--go-ink);
+      }
+      .step:nth-child(3) > b {
+        background: var(--nogo);
+        color: #fff;
+      }
+      .step h3 {
+        font: 800 36px/1.1 var(--sans);
+        letter-spacing: -0.02em;
+      }
+      .step p {
+        margin-top: 8px;
+        font: 500 26px/1.4 var(--sans);
+        color: var(--ink-2);
+      }
+      .coins {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .coins i {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font: 700 16px/1 var(--mono);
+        font-style: normal;
+        border: 3px solid var(--ink);
+      }
+      .coins i.back {
+        background: var(--go);
+        color: var(--go-ink);
+      }
+      .coins i.kept {
+        background: var(--nogo);
+        color: #fff;
+        border-color: var(--nogo);
+      }
+
+      /* 6 backers */
+      .s6 .wrap {
+        display: grid;
+        grid-template-columns: 1fr 540px;
+        gap: 90px;
+        margin-top: 40px;
+        align-items: start;
+      }
+      .s6 .ex {
+        padding: 28px 36px 30px;
+      }
+      .s6 .ex .given {
+        font: 600 27px/1.4 var(--sans);
+        margin-bottom: 34px;
+      }
+      .s6 .ex .given b {
+        background: var(--ink);
+        color: var(--paper);
+        font: 700 22px/1 var(--mono);
+        padding: 4px 10px;
+        border-radius: 6px;
+      }
+      .s6 .blbl {
+        margin-bottom: 24px;
+      }
+      .s6 .bar {
+        margin-bottom: 36px;
+      }
+      .s6 .res {
+        font: 700 28px/1.35 var(--sans);
+      }
+      .s6 .res em {
+        font-style: normal;
+        background: var(--open);
+        color: #fff;
+        border-radius: 8px;
+        padding: 2px 10px;
+      }
+      .s6 .never {
+        margin-top: 28px;
+        font: 600 28px/1.4 var(--sans);
+        color: var(--ink-2);
+      }
+      .s6 .never b {
+        color: var(--nogo);
+      }
+
+      /* 7 try it */
+      .s7 .wrap {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 110px;
+        margin-top: 46px;
+        align-items: start;
+      }
+      .path {
+        display: grid;
+        gap: 22px;
+      }
+      .pstep {
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: 24px;
+        align-items: center;
+        background: var(--card);
+        border: 3px solid var(--ink);
+        border-radius: 24px;
+        padding: 22px 28px;
+      }
+      .pstep > b {
+        font: 400 56px/1 var(--display);
+        text-align: center;
+        border-radius: 14px;
+        padding: 9px 0 3px;
+        background: var(--ink);
+        color: var(--go);
+      }
+      .pstep h3 {
+        font: 800 34px/1.1 var(--sans);
+        letter-spacing: -0.015em;
+      }
+      .pstep p {
+        margin-top: 6px;
+        font: 500 25px/1.4 var(--sans);
+        color: var(--ink-2);
+      }
+      .pstep.hot {
+        background: var(--go);
+        border-color: var(--go-ink);
+      }
+      .s7 .qrc {
+        text-align: center;
+      }
+      .s7 .qrc .box {
+        display: block;
+        background: var(--card);
+        border: 3px solid var(--ink);
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 10px 10px 0 var(--ink);
+        transform: rotate(2deg);
+      }
+      .s7 .qrc img {
+        display: block;
+        width: 100%;
+      }
+      .s7 .qrc .start {
+        display: inline-block;
+        margin-top: 30px;
+        background: var(--ink);
+        color: var(--go);
+        padding: 10px 16px;
+        border-radius: 8px;
+        font: 700 18px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .s7 .qrc p {
+        margin-top: 12px;
+        font: 600 18px/1.45 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .s7 .qrc .vid {
+        display: inline-block;
+        margin-top: 22px;
+        background: var(--go);
+        color: var(--go-ink);
+        border: 3px solid var(--ink);
+        border-radius: 999px;
+        padding: 12px 20px;
+        font: 700 18px/1 var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .s7 .more {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        bottom: 56px;
+        font: 500 22px/1.5 var(--sans);
+        color: var(--muted);
+      }
+      .s7 .more b,
+      .s7 .more a {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      /* 8 why solana */
+      .s8 .cols {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 44px;
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        bottom: 110px;
+      }
+      .s8 .col {
+        border-top: 4px solid var(--paper);
+        padding-top: 30px;
+      }
+      .s8 .col .n {
+        font: 400 90px/0.85 var(--display);
+        color: var(--go);
+        display: block;
+        margin-bottom: 22px;
+      }
+      .s8 .col h3 {
+        font: 400 42px/1 var(--display);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        min-height: 84px;
+      }
+      .s8 .col p {
+        font: 500 25px/1.42 var(--sans);
+        color: #d8d1c1;
+      }
+      .s8 .col p small {
+        display: block;
+        margin-top: 12px;
+        font: 600 16px/1.4 var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #a09a8b;
+      }
+
+      /* 9 alternatives */
+      table.cmp {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 40px;
+        table-layout: fixed;
+      }
+      table.cmp th {
+        font: 700 24px/1.15 var(--sans);
+        text-align: left;
+        padding: 0 20px 18px;
+        vertical-align: bottom;
+        border-bottom: 4px solid var(--ink);
+        color: var(--muted);
+      }
+      table.cmp th small {
+        display: block;
+        font: 600 16px/1.2 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #a39b89;
+        margin-top: 6px;
+      }
+      table.cmp th.us {
+        background: var(--go);
+        border-radius: 20px 20px 0 0;
+        padding-top: 18px;
+        color: var(--ink);
+        font-size: 30px;
+      }
+      table.cmp td {
+        padding: 20px;
+        border-bottom: 2px solid var(--line);
+        vertical-align: top;
+        font: 500 22px/1.3 var(--sans);
+        color: var(--muted);
+      }
+      table.cmp td.q {
+        font: 700 25px/1.3 var(--sans);
+        color: var(--ink);
+      }
+      table.cmp td.us {
+        background: rgba(185, 244, 60, 0.35);
+        color: var(--ink);
+        font: 700 25px/1.3 var(--sans);
+      }
+      table.cmp tr:last-child td.us {
+        border-radius: 0 0 20px 20px;
+      }
+      table.cmp col.c0 {
+        width: 24%;
+      }
+      table.cmp col.cu {
+        width: 22%;
+      }
+      .t {
+        display: inline-block;
+        font: 700 14px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 6px 9px;
+        border-radius: 999px;
+        margin: 0 8px 0 0;
+        transform: translateY(-2px);
+      }
+      .t.n {
+        background: #f3cfc4;
+        color: #8a2a10;
+      }
+      .t.m {
+        background: var(--paper-2);
+        color: var(--ink-2);
+      }
+      .t.y {
+        background: var(--ink);
+        color: var(--go);
+      }
+      .s9 .fn {
+        margin-top: 26px;
+        font: 500 21px/1.4 var(--sans);
+        color: var(--muted);
+      }
+
+      /* 10 market */
+      .s10 .g {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        margin-top: 46px;
+      }
+      .s10 h3 {
+        font: 600 20px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 22px;
+      }
+      .fee {
+        display: grid;
+        gap: 14px;
+      }
+      .fee > div {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        gap: 24px;
+        align-items: center;
+        border-radius: 22px;
+        padding: 18px 24px;
+        border: 3px solid var(--ink);
+        background: var(--card);
+      }
+      .fee b {
+        font: 400 58px/0.95 var(--display);
+      }
+      .fee p {
+        font: 600 24px/1.3 var(--sans);
+      }
+      .fee p small {
+        display: block;
+        font: 600 16px/1.2 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .fee .g1 {
+        background: var(--go);
+      }
+      .fee .g1 p small {
+        color: var(--go-ink);
+      }
+      .fee .b2b {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .fee .b2b p small {
+        color: var(--go);
+      }
+      .gtm {
+        display: grid;
+        gap: 14px;
+      }
+      .gtm div {
+        border: 3px solid var(--ink);
+        border-radius: 18px;
+        padding: 16px 24px;
+        background: var(--card);
+        font: 700 25px/1.25 var(--sans);
+      }
+      .gtm div small {
+        display: block;
+        font: 600 16px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      .gtm div:first-child {
+        background: var(--go);
+      }
+      .s10 .pilot {
+        margin-top: 18px;
+        font: 500 22px/1.4 var(--sans);
+        color: var(--muted);
+      }
+      .s10 .pilot b {
+        color: var(--ink);
+      }
+      .s10 .honest {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        bottom: 62px;
+        border-top: 3px solid var(--ink);
+        padding-top: 22px;
+        font: 600 25px/1.4 var(--sans);
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+
+      /* 11 built */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        margin-top: 46px;
+      }
+      .stat {
+        padding: 28px 34px 30px;
+      }
+      .stat b {
+        font: 400 140px/0.85 var(--display);
+        display: block;
+      }
+      .stat span {
+        display: block;
+        margin-top: 16px;
+        font: 700 30px/1.2 var(--sans);
+        letter-spacing: -0.01em;
+      }
+      .stat small {
+        display: block;
+        margin-top: 8px;
+        font: 500 21px/1.4 var(--sans);
+        color: var(--muted);
+      }
+      .s11 .lower {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 28px;
+        margin-top: 28px;
+      }
+      .verify {
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 22px;
+        padding: 24px 30px;
+      }
+      .verify small {
+        font: 600 17px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--go);
+        display: block;
+        margin-bottom: 16px;
+      }
+      .verify dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 14px 18px;
+        font: 500 23px/1.4 var(--sans);
+      }
+      .verify dt {
+        font: 600 16px/1.7 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #a09a8b;
+      }
+      .verify dd {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+      .verify code {
+        font: 600 20px/1.4 var(--mono);
+      }
+      .verify a {
+        text-decoration: underline;
+        text-decoration-color: var(--go);
+        text-underline-offset: 4px;
+      }
+      .warn {
+        border: 3px dashed var(--nogo);
+        border-radius: 22px;
+        padding: 24px 30px;
+      }
+      .warn small {
+        font: 600 17px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--nogo);
+        display: block;
+        margin-bottom: 12px;
+      }
+      .warn li {
+        font: 500 23px/1.4 var(--sans);
+        margin: 4px 0;
+      }
+      .warn ul {
+        margin: 0;
+        padding-left: 26px;
+      }
+
+      /* 12 roadmap */
+      .road {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        top: 450px;
+      }
+      .road .track {
+        position: relative;
+        height: 24px;
+        border: 4px solid var(--ink);
+        border-radius: 999px;
+        background: var(--card);
+      }
+      .road .track i {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 9%;
+        background: var(--go);
+        border-radius: 999px;
+      }
+      .road .track::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 50%;
+        width: 44px;
+        height: 44px;
+        margin-top: -22px;
+        border-radius: 50%;
+        background: var(--go);
+        border: 4px solid var(--ink);
+        z-index: 1;
+      }
+      .road .ms {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 34px;
+        margin-left: 190px;
+      }
+      .road .m {
+        position: relative;
+        padding-top: 70px;
+      }
+      .road .m::before {
+        content: "";
+        position: absolute;
+        top: -38px;
+        left: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--paper);
+        border: 4px solid var(--ink);
+      }
+      .road .m small {
+        font: 600 19px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .road .m h3 {
+        font: 400 46px/0.98 var(--display);
+        text-transform: uppercase;
+        margin: 16px 0 18px;
+      }
+      .road .m p {
+        font: 500 23px/1.42 var(--sans);
+        color: var(--ink-2);
+      }
+      .road .now {
+        position: absolute;
+        left: 0;
+        top: -96px;
+        font: 600 19px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 10px 14px;
+        border-radius: 8px;
+      }
+
+      /* 13 close */
+      .s13 .big {
+        font: 400 184px/0.9 var(--display);
+        text-transform: uppercase;
+        margin-top: 56px;
+      }
+      .s13 .big span {
+        display: inline-block;
+      }
+      .s13 .big .hl {
+        --r: -2.5deg;
+        padding: 0 0.1em;
+        margin-bottom: 0.06em;
+      }
+      .s13 .big .st {
+        -webkit-text-stroke: 4px var(--paper);
+      }
+      .s13 .ask {
+        margin-top: 44px;
+        font: 700 44px/1.25 var(--sans);
+        letter-spacing: -0.015em;
+        max-width: 30ch;
+      }
+      .s13 .ask b {
+        color: var(--go);
+      }
+      .s13 .qr {
+        position: absolute;
+        right: 128px;
+        top: 200px;
+        width: 380px;
+        text-align: center;
+      }
+      .s13 .qr .box {
+        display: block;
+        background: var(--paper);
+        border-radius: 28px;
+        padding: 34px;
+        transform: rotate(3deg);
+        box-shadow: 10px 10px 0 var(--go);
+      }
+      .s13 .qr img {
+        display: block;
+        width: 100%;
+      }
+      .s13 .qr p {
+        margin-top: 34px;
+        font: 600 18px/1.4 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #a09a8b;
+      }
+      .s13 .qr .vid {
+        display: inline-block;
+        margin-top: 16px;
+        background: var(--go);
+        color: var(--go-ink);
+        padding: 8px 14px;
+        border-radius: 8px;
+        font: 600 18px/1.4 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .s13 .meta {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        bottom: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .s13 .links {
+        display: flex;
+        gap: 72px;
+      }
+      .s13 .links a {
+        display: block;
+        font: 700 36px/1 var(--mono);
+        color: var(--paper);
+      }
+      .s13 .links a.live {
+        color: var(--go);
+      }
+      .s13 .links span {
+        display: block;
+        font: 600 16px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #a09a8b;
+        margin-bottom: 10px;
+      }
+      .s13 .name {
+        font: 600 24px/1.5 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #a09a8b;
+        text-align: right;
+      }
+      .s13 .name b {
+        color: var(--paper);
+        font-weight: 700;
+      }
+
+      .s5 .shot {
+        padding: 20px;
+      }
+      .s5 .shot img {
+        border-radius: 12px;
+      }
+      .legend span {
+        white-space: nowrap;
+      }
+      .s11 .stats {
+        margin-top: 80px;
+      }
+      .s11 .stat {
+        padding: 40px 42px 44px;
+      }
+      .s11 .stat b {
+        font-size: 170px;
+      }
+      .s11 .lower {
+        margin-top: 40px;
+      }
+      .s11 .lower {
+        grid-template-columns: 1fr;
+      }
+      .s11 .before {
+        margin-top: 26px;
+        font: 500 24px/1.4 var(--sans);
+        color: var(--muted);
+      }
+      .s11 .before b {
+        color: var(--nogo);
+      }
+      .s9 table.cmp td {
+        padding: 26px 20px;
+      }
+      .s10 .proof {
+        position: absolute;
+        left: 128px;
+        right: 128px;
+        bottom: 80px;
+        border-top: 3px solid var(--ink);
+        padding-top: 30px;
+        font: 700 40px/1.25 var(--sans);
+        letter-spacing: -0.015em;
+      }
+      .s10 .proof span {
+        display: block;
+        font: 600 20px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+      .s10 .proof b {
+        background: var(--go);
+        padding: 0 0.15em;
+      }
+      /* presentation mode (browser only; the PDF and ?slide= renders show the final state) */
+      body.present {
+        background: #0c0b0a;
+        overflow: hidden;
+        height: 100vh;
+        cursor: default;
+      }
+      body.present .slide {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin: 0;
+        display: none;
+        transform: translate(-50%, -50%) scale(var(--k, 1));
+      }
+      body.present .slide.on {
+        display: block;
+        animation: enter 0.4s ease both;
+      }
+      @keyframes enter {
+        from {
+          opacity: 0;
+        }
+      }
+      .ui {
+        display: none;
+      }
+      body.present .ui {
+        display: block;
+      }
+      .prog {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 4px;
+        background: rgba(242, 237, 225, 0.12);
+        z-index: 9;
+      }
+      .prog i {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--go);
+        transition: width 0.4s ease;
+      }
+      .ctl {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px;
+        border-radius: 999px;
+        background: rgba(18, 17, 15, 0.86);
+        color: var(--paper);
+        font: 600 14px/1 var(--mono);
+        letter-spacing: 0.08em;
+        z-index: 9;
+        transition: opacity 0.3s;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      }
+      .ctl button,
+      .ctl a {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+        padding: 10px 14px;
+        border-radius: 999px;
+        text-transform: uppercase;
+      }
+      .ctl button:hover,
+      .ctl a:hover {
+        background: rgba(242, 237, 225, 0.12);
+      }
+      .ctl .cnt {
+        padding: 0 8px;
+        min-width: 80px;
+        text-align: center;
+        color: #a09a8b;
+      }
+      .ctl .pdf {
+        background: var(--go);
+        color: var(--go-ink);
+      }
+      body.present.idle .ctl {
+        opacity: 0;
+      }
+      body.present.idle {
+        cursor: none;
+      }
+      .hint {
+        position: fixed;
+        right: 24px;
+        bottom: 28px;
+        font: 600 13px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #a09a8b;
+        z-index: 9;
+        transition: opacity 0.4s;
+      }
+      body.present.moved .hint {
+        opacity: 0;
+      }
+      .hint.keep {
+        opacity: 1 !important;
+        left: 16px;
+        right: 16px;
+        top: 14px;
+        bottom: auto;
+        text-align: center;
+        font-size: 12px;
+        color: var(--go);
+      }
+
+      /* motion only where it tells the story: slides 1, 2 and 4 */
+      .present .motion.play .a-rise {
+        animation: rise 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) both;
+      }
+      .present .motion.play .a-fade {
+        animation: fade 0.8s ease var(--d, 0s) both;
+      }
+      .present .motion.play .a-slam {
+        animation: slam 0.55s cubic-bezier(0.3, 1.4, 0.5, 1) var(--d, 0s) both;
+      }
+      .present .motion.play .a-right {
+        animation: right 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) both;
+      }
+      .present .motion.play .a-wipe {
+        animation: wipe 0.6s cubic-bezier(0.7, 0, 0.3, 1) var(--d, 0s) both;
+      }
+      .present .motion.play .bar > i {
+        animation: fill 1.3s cubic-bezier(0.3, 0.7, 0.2, 1) var(--d, 0.35s) both;
+      }
+      .present .motion.play .bar > i.pl {
+        animation-name: fillpl;
+      }
+      .present .motion.play .fork path {
+        stroke-dasharray: 1;
+        animation: draw 0.7s ease var(--d, 1.5s) both;
+      }
+      .present .motion.play .dots i {
+        animation: pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3) var(--d, 0s) both;
+      }
+      .present .motion.play .dots i.in {
+        animation:
+          pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3) var(--d, 0s) both,
+          show 0.35s ease var(--f, 1.4s) both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(46px) rotate(var(--r, 0deg));
+        }
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+      }
+      @keyframes pop {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+      }
+      @keyframes slam {
+        0% {
+          opacity: 0;
+          transform: rotate(var(--r, 0deg)) scale(2.6);
+        }
+        60% {
+          opacity: 1;
+          transform: rotate(var(--r, 0deg)) scale(0.93);
+        }
+        100% {
+          opacity: 1;
+          transform: rotate(var(--r, 0deg)) scale(1);
+        }
+      }
+      @keyframes right {
+        from {
+          opacity: 0;
+          transform: translateX(140px) rotate(var(--r, 0deg));
+        }
+      }
+      @keyframes wipe {
+        from {
+          clip-path: inset(0 100% 0 0);
+        }
+        to {
+          clip-path: inset(0 0 0 0);
+        }
+      }
+      @keyframes fill {
+        from {
+          width: 0;
+        }
+      }
+      @keyframes fillpl {
+        0% {
+          width: 0;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+      }
+      @keyframes draw {
+        from {
+          stroke-dashoffset: 1;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes show {
+        from {
+          background: transparent;
+          border: 4px dashed #b6ab93;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .present .slide *,
+        .present .slide.on {
+          animation: none !important;
+        }
+      }
+      @media print {
+        body.present {
+          overflow: visible;
+          height: auto;
+          background: none;
+        }
+        body.present .slide {
+          display: block !important;
+          position: relative;
+          left: auto;
+          top: auto;
+          transform: none;
+        }
+        .slide,
+        .slide * {
+          animation: none !important;
+        }
+        .ui {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1 TITLE -->
+    <section class="slide s1 motion">
+      <div class="inner">
+        <p class="kicker a-fade">
+          Superteam Germany × WHU · Build an MVP with Solana
+        </p>
+        <h1>
+          <img
+            class="logo a-wipe"
+            style="--d: 0.1s"
+            src="img/headcount-logo.svg"
+            alt="Headcount"
+          />
+        </h1>
+        <p class="tag a-rise" style="--d: 0.35s">
+          The event happens when the headcount does.
+        </p>
+        <p class="sub a-rise" style="--d: 0.5s">
+          Everyone commits money by a deadline. Enough people: it's GO. Too few:
+          everyone gets their money back, enforced on Solana.
+        </p>
+      </div>
+      <span class="stamp gostamp a-slam" style="--d: 1.75s" aria-hidden="true"
+        >It's GO.</span
+      >
+      <div class="barwrap" aria-hidden="true">
+        <div class="count">
+          <span data-count="10" data-dur="1300" data-delay="450">10</span
+          ><em><b>committed</b> · min 8</em>
+        </div>
+        <div class="bar done">
+          <i style="--d: 0.45s"></i
+          ><span class="tick" data-l="MIN" style="left: 62%"></span>
+        </div>
+      </div>
+      <div class="foot">
+        <p class="by">
+          <b
+            >Live on devnet:
+            <a href="https://headcount.sorevo.de">headcount.sorevo.de</a></b
+          ><br /><a
+            class="vid"
+            href="https://headcount.sorevo.de/pitch/video.html"
+            >▶ Watch the 90-second demo</a
+          >
+        </p>
+        <p class="by" style="text-align: right">
+          <b>Niklas Wichter</b><br />solo builder
+        </p>
+      </div>
+    </section>
+
+    <!-- 2 PROBLEM -->
+    <section class="slide s2 motion">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >02 / 13 · Problem</span
+        >
+      </div>
+      <div class="grid2">
+        <div>
+          <h2 class="big">
+            <span class="st a-rise">40 interested.</span><br /><span
+              class="red a-slam"
+              style="--d: 2.4s"
+              >9 show up.</span
+            >
+          </h2>
+          <p class="lead a-rise" style="--d: 2.7s">
+            The organizer books the room, orders the pizza and
+            <b>eats the gap.</b> A free RSVP costs nothing, so it says nothing.
+          </p>
+        </div>
+        <div>
+          <div class="dots" aria-label="40 people interested, 9 show up">
+            <i class="in"></i><i></i><i></i><i class="in"></i><i></i><i></i
+            ><i></i><i class="in"></i> <i></i><i></i><i class="in"></i><i></i
+            ><i></i><i></i><i></i><i></i> <i></i><i class="in"></i><i></i><i></i
+            ><i></i><i class="in"></i><i></i><i></i> <i></i><i></i><i></i><i></i
+            ><i class="in"></i><i></i><i></i><i class="in"></i> <i></i><i></i
+            ><i class="in"></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="dlg a-fade" style="--d: 0.9s">
+            <span><i style="background: var(--ink)"></i>showed up</span
+            ><span
+              ><i style="border: 4px dashed #b6ab93"></i>clicked
+              "interested"</span
+            >
+          </div>
+          <p class="illu a-fade" style="--d: 1s">
+            Illustrative numbers for a free meetup
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 INSIGHT -->
+    <section class="slide s3 dark">
+      <div class="top">
+        <img src="img/headcount-logo-dark.svg" alt="Headcount" /><span
+          class="pg"
+          >03 / 13 · Insight</span
+        >
+      </div>
+      <p class="kick">
+        <b>Kickstarter made all-or-nothing work for products.</b><br />Nobody
+        built it for <em>everyday events</em>:
+      </p>
+      <div class="row">
+        <span class="sticker">the Tuesday meetup</span>
+        <span class="sticker">the team offsite</span>
+        <span class="sticker">the bus to the conference</span>
+      </div>
+      <div class="punch">
+        <h2 class="h">
+          Money is the only RSVP<br />that
+          <span class="hl">means something.</span>
+        </h2>
+        <p>
+          And only if it comes back <b>without asking anyone</b>. Otherwise
+          nobody commits.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4 HOW IT WORKS -->
+    <section class="slide s4 motion">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >04 / 13 · How it works</span
+        >
+      </div>
+      <p class="kicker">How it works</p>
+      <h2 class="h a-rise" style="font-size: 96px">
+        Commit by the deadline.<br />Every bar you set must clear.
+      </h2>
+      <p class="modes a-rise" style="--d: 0.2s">
+        Two modes: <b>Ticket</b> (pay to attend) · <b>Deposit</b> (free event,
+        deposit back at the door).
+      </p>
+      <div class="flow">
+        <div class="left">
+          <p class="blbl">
+            <span><b>People</b> · 6 committed · min 8</span>
+          </p>
+          <div class="bar">
+            <i style="width: 45%"></i
+            ><span class="tick" data-l="MIN" style="left: 60%"></span>
+          </div>
+          <p class="blbl">
+            <span
+              ><b>Money</b> · 100 of 150 USDC
+              <span class="opt">optional budget</span></span
+            >
+          </p>
+          <div class="bar">
+            <i style="width: 40%; --d: 0.5s"></i
+            ><i class="pl" style="left: 40%; width: 26.6%; --d: 1.2s"></i
+            ><span
+              class="tick end"
+              data-l="BUDGET"
+              style="left: 100%; margin-left: -6px"
+            ></span>
+          </div>
+          <div class="under a-fade" style="--d: 1.2s">
+            <span class="rule">DECIDED <b>AT THE DEADLINE</b></span
+            ><span class="legend"
+              ><span><i style="background: var(--open)"></i>not there yet</span
+              ><span
+                ><i
+                  style="
+                    background: repeating-linear-gradient(
+                      -45deg,
+                      var(--open-2) 0 5px,
+                      var(--open) 5px 10px
+                    );
+                  "
+                ></i
+                >backer pledges</span
+              ></span
+            >
+          </div>
+        </div>
+        <svg class="fork" viewBox="0 0 200 540" aria-hidden="true">
+          <path
+            pathLength="1"
+            d="M-46 118 C -14 118, -20 196, 0 196"
+            fill="none"
+            stroke="#12110f"
+            stroke-width="5"
+          />
+          <path
+            pathLength="1"
+            d="M-46 274 C -14 274, -20 196, 0 196"
+            fill="none"
+            stroke="#12110f"
+            stroke-width="5"
+          />
+          <path
+            pathLength="1"
+            style="--d: 1.9s"
+            d="M0 196 C 100 196, 80 110, 186 110"
+            fill="none"
+            stroke="#12110f"
+            stroke-width="5"
+          />
+          <path
+            pathLength="1"
+            style="--d: 1.9s"
+            d="M0 196 C 100 196, 80 420, 186 420"
+            fill="none"
+            stroke="#12110f"
+            stroke-width="5"
+          />
+          <path
+            pathLength="1"
+            style="--d: 2.4s"
+            d="M172 98 L188 110 L172 122"
+            fill="none"
+            stroke="#12110f"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            pathLength="1"
+            style="--d: 2.4s"
+            d="M172 408 L188 420 L172 432"
+            fill="none"
+            stroke="#12110f"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle
+            class="a-fade"
+            style="--d: 1.8s"
+            cx="0"
+            cy="196"
+            r="11"
+            fill="#12110f"
+          />
+        </svg>
+        <div class="out go a-right" style="--d: 2.5s">
+          <p class="if">Every bar cleared</p>
+          <strong>It's GO.</strong>
+          <p>The event happens. The organizer is paid after the deadline.</p>
+        </div>
+        <div class="out nogo a-right" style="--d: 2.75s">
+          <p class="if">Any bar missed</p>
+          <strong>NO-GO.</strong>
+          <p>
+            Everyone, backers included, gets their money back. Anyone can trigger it; no organizer needed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 DEPOSIT MODE + DOOR -->
+    <section class="slide s5">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >05 / 13 · Deposit mode</span
+        >
+      </div>
+      <p class="kicker">Deposit mode, for free events</p>
+      <h2 class="h">No-shows pay for the pizza.</h2>
+      <div class="wrap">
+        <div class="steps">
+          <div class="step">
+            <b>1</b>
+            <div>
+              <h3>Lock a 5 USDC deposit</h3>
+              <p>
+                It waits in a program vault. The app pays the fees, so no SOL is
+                needed.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <b>2</b>
+            <div>
+              <h3>Scan the door screen</h3>
+              <p>
+                Its QR pass is signed and valid for 90 s. The chain checks it
+                and returns the deposit in the check-in transaction.
+              </p>
+              <div class="coins" aria-label="6 of 9 deposits returned">
+                <i class="back">5</i><i class="back">5</i><i class="back">5</i
+                ><i class="back">5</i><i class="back">5</i><i class="back">5</i
+                ><i class="kept">5</i><i class="kept">5</i><i class="kept">5</i>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <b>3</b>
+            <div>
+              <h3>No-shows pay</h3>
+              <p>
+                After the event, 3 empty chairs = 15 USDC for the organizer.
+                That's the pizza.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="shot">
+            <img
+              src="img/door-crop.png"
+              alt="Door screen: signed pass QR and 5 of 9 checked in"
+            />
+          </div>
+          <p class="cap">The door screen, live on devnet</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 BACKERS -->
+    <section class="slide s6">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >06 / 13 · Budget and backers</span
+        >
+      </div>
+      <p class="kicker">Ticket events: budget goal and backers</p>
+      <h2 class="h-md">
+        Backers can pay for the pizza,<br />but they can't fake the headcount.
+      </h2>
+      <div class="wrap">
+        <div>
+          <div class="card ex">
+            <p class="given">
+              Room and food cost <b>150 USDC</b>. Tickets are <b>10 USDC</b>,
+              minimum <b>8 people</b>. A company backs it with <b>40 USDC</b>,
+              no seat.
+            </p>
+            <p class="blbl">
+              <span><b>People</b> · 8 of 8</span
+              ><span
+                style="
+                  color: var(--go-ink);
+                  background: var(--go);
+                  padding: 4px 8px;
+                  border-radius: 6px;
+                "
+                >cleared</span
+              >
+            </p>
+            <div class="bar done">
+              <i style="width: 100%"></i
+              ><span
+                class="tick end"
+                data-l=""
+                style="left: 100%; margin-left: -6px"
+              ></span>
+            </div>
+            <p class="blbl">
+              <span
+                ><b>Money</b> · 80 tickets + 40 backer = 120 of 150 USDC</span
+              >
+            </p>
+            <div class="bar">
+              <i style="width: 53.3%"></i
+              ><i class="pl" style="left: 53.3%; width: 26.7%"></i
+              ><span
+                class="tick end"
+                data-l=""
+                style="left: 100%; margin-left: -6px"
+              ></span>
+            </div>
+            <p class="res">
+              <em>30 USDC to go</em> 3 more tickets or another backer.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="shot">
+            <img
+              src="img/card-backers.png"
+              alt="Back this event: pledge without a seat"
+            />
+          </div>
+          <p class="cap">Backing an event in the app</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 TRY IT -->
+    <section class="slide s7">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >07 / 13 · Try it</span
+        >
+      </div>
+      <p class="kicker">Live on Solana devnet · attendees need no SOL</p>
+      <h2 class="h-md">Try it in 3 minutes.</h2>
+      <div class="wrap">
+        <div class="path">
+          <div class="pstep">
+            <b>1</b>
+            <div>
+              <h3>Open Hackathon Pizza Night</h3>
+              <p>
+                At
+                <a
+                  class="u"
+                  href="https://headcount.sorevo.de/e/41w36CuNi1fga9Tb8btkaVvv8KBB6Q9p2Ukau3b3ecGb"
+                  >headcount.sorevo.de</a
+                >. Phantom: Settings → Developer Settings → Testnet Mode (Solflare
+                and Backpack have the same switch).
+              </p>
+            </div>
+          </div>
+          <div class="pstep">
+            <b>2</b>
+            <div>
+              <h3>Get test USDC</h3>
+              <p>Paste your address on the page and tap Get test USDC.</p>
+            </div>
+          </div>
+          <div class="pstep hot">
+            <b>3</b>
+            <div>
+              <h3>Commit 10 USDC</h3>
+              <p>
+                Scan the QR or click Commit with browser wallet. The app pays
+                the fee; the bar moves.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="qrc">
+          <a
+            class="box"
+            href="https://headcount.sorevo.de/e/41w36CuNi1fga9Tb8btkaVvv8KBB6Q9p2Ukau3b3ecGb"
+            ><img
+              src="img/qr-pizza.svg"
+              alt="QR code to Hackathon Pizza Night" /></a
+          ><span class="start">Judges start here</span>
+          <p>Scan with your phone</p>
+          <a class="vid" href="https://headcount.sorevo.de/pitch/video.html"
+            >▶ Or watch the 90-second demo</a
+          >
+        </div>
+      </div>
+      <p class="more">
+        <b>More:</b>
+        <a
+          class="u"
+          href="https://headcount.sorevo.de/e/HnYFByQ8bWXGvknnYPpACeuKA3vJgFUYAxDR2tsnabEd/door#key=264eceWaEDkGsFXkfQn2Lr1A9Uvj2ygAs9sMavMV6PmbJ8RKZ6j75Ne2GYzvN4zcYA9yT4vsC7wsNAhPk1KoVUhu"
+          >door screen</a
+        >
+        ·
+        <a
+          class="u"
+          href="https://explorer.solana.com/address/9NeaXRkbU4Jxsmh2aJyN74gxRoAR7fYupV68FEzDH6KH?cluster=devnet"
+          >Solana Explorer</a
+        >
+        · create your own event
+      </p>
+    </section>
+
+    <!-- 8 WHY SOLANA -->
+    <section class="slide s8 dark">
+      <div class="top">
+        <img src="img/headcount-logo-dark.svg" alt="Headcount" /><span
+          class="pg"
+          >08 / 13 · Why Solana</span
+        >
+      </div>
+      <p class="kicker">Why Solana</p>
+      <h2 class="h">Strangers trust the rules,<br />not the organizer.</h2>
+      <p class="sub">
+        The program pays out only after the deadline, refunds
+        <b>everyone without the organizer</b>, and allows cancelling only before
+        the deadline.
+      </p>
+      <div class="cols">
+        <div class="col">
+          <span class="n">01</span>
+          <h3>A program vault only the rules can open</h3>
+          <p>
+            The organizer can't touch the money.
+          </p>
+        </div>
+        <div class="col">
+          <span class="n">02</span>
+          <h3>Sponsored by default</h3>
+          <p>
+            A transaction names its own fee payer, so attendees never hold SOL.
+          </p>
+        </div>
+        <div class="col">
+          <span class="n">03</span>
+          <h3>Scan-to-pay standard</h3>
+          <p>Solana Pay QR works in the wallets people already have.</p>
+        </div>
+        <div class="col">
+          <span class="n">04</span>
+          <h3>Check in and refund at once</h3>
+          <p>
+            Ed25519 verifies the door pass in the same transaction that returns
+            the deposit.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 ALTERNATIVES -->
+    <section class="slide s9">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >09 / 13 · Alternatives</span
+        >
+      </div>
+      <p class="kicker">Alternatives · typical setups</p>
+      <h2 class="h-md" style="font-size: 84px">
+        Why not Luma, Stripe or Kickstarter?
+      </h2>
+      <table class="cmp">
+        <colgroup>
+          <col class="c0" />
+          <col />
+          <col />
+          <col />
+          <col class="cu" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Luma, Eventbrite<small>paid tickets</small></th>
+            <th>Stripe<small>card hold</small></th>
+            <th>Kickstarter, Indiegogo<small>all-or-nothing</small></th>
+            <th class="us">Headcount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="q">Trust without a platform</td>
+            <td><span class="t n">No</span>platform and organizer</td>
+            <td><span class="t n">No</span>merchant account</td>
+            <td><span class="t n">No</span>platform charges on success</td>
+            <td class="us">
+              <span class="t y">Yes</span>public rules, program vault
+            </td>
+          </tr>
+          <tr>
+            <td class="q">Refund if the organizer vanishes</td>
+            <td><span class="t m">Depends</span>platform support</td>
+            <td><span class="t m">Partly</span>hold lapses after days</td>
+            <td><span class="t m">Partly</span>only if the goal is missed</td>
+            <td class="us">
+              <span class="t y">Yes</span>everyone refunds themselves
+            </td>
+          </tr>
+          <tr>
+            <td class="q">Minimum headcount, backers, check-in</td>
+            <td><span class="t m">Partly</span>check-in only</td>
+            <td><span class="t n">No</span>build it yourself</td>
+            <td><span class="t m">Partly</span>money goal only</td>
+            <td class="us"><span class="t y">Yes</span>all three</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="fn">
+        Kickback (Ethereum, 2018) proved stake-to-RSVP; Headcount adds a minimum
+        headcount, backers, self check-in and phones without gas. Other terms
+        simplified; they vary by provider and country.
+      </p>
+    </section>
+
+    <!-- 10 MARKET -->
+    <section class="slide s10">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >10 / 13 · Market</span
+        >
+      </div>
+      <p class="kicker">Who it's for, who pays</p>
+      <h2 class="h-md" style="font-size: 80px">
+        Start where the pain is weekly: crypto meetups.
+      </h2>
+      <div class="g">
+        <div>
+          <h3>Who pays: fees enforced on-chain</h3>
+          <div class="fee">
+            <div class="g1">
+              <b>2 %</b>
+              <p>
+                <small>Ticket events</small>of the payout, only when it's GO
+              </p>
+            </div>
+            <div>
+              <b>5 %</b>
+              <p>
+                <small>Deposit events</small>of forfeited no-show deposits;
+                refunds and returned deposits are always free
+              </p>
+            </div>
+            <div class="b2b">
+              <b>B2B</b>
+              <p>
+                <small>Backers</small>companies back events and pay only if
+                people come
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Go-to-market</h3>
+          <div class="gtm">
+            <div>
+              <small>First</small>Superteam chapters and Solana meetups: wallets
+              installed, sponsors already pay for food
+            </div>
+            <div><small>Then</small>University clubs, starting at WHU</div>
+            <div>
+              <small>Then</small>A headcount widget inside Luma and Meetup pages
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="proof">
+        <span>For backers</span>Check-ins are on-chain, so every event ends with a verified
+        attendance count: <b>the sponsor report they never had.</b>
+      </p>
+    </section>
+
+    <!-- 11 BUILT -->
+    <section class="slide s11">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >11 / 13 · Built</span
+        >
+      </div>
+      <p class="kicker">Built at the hackathon</p>
+      <h2 class="h-md">Built on Solana, live on devnet.</h2>
+      <div class="stats">
+        <div class="card stat">
+          <b>14</b><span>on-chain actions</span
+          ><small
+            >commit, pledge, refund, door-pass check-in, payout with fee, cancel, close
+            …</small
+          >
+        </div>
+        <div class="card stat">
+          <b>1</b><span>transaction at the door</span
+          ><small>Ed25519 checks the pass, the deposit comes back in the same step</small>
+        </div>
+        <div
+          class="card stat"
+          style="background: var(--go); border-color: var(--go-ink)"
+        >
+          <b>0 SOL</b><span>needed by attendees</span
+          ><small style="color: #3a4a14"
+            >the app pays fees and rent, and gets the rent back</small
+          >
+        </div>
+      </div>
+      <div class="lower">
+        <div class="verify">
+          <small>Verify it yourself</small>
+          <dl>
+            <dt>Program</dt>
+            <dd>
+              <a
+                href="https://explorer.solana.com/address/9NeaXRkbU4Jxsmh2aJyN74gxRoAR7fYupV68FEzDH6KH?cluster=devnet"
+                ><code>9NeaXRkbU4Jxsmh2aJyN74gxRoAR7fYupV68FEzDH6KH</code></a
+              >
+            </dd>
+            <dt>Code</dt>
+            <dd>
+              <a href="https://github.com/NWichter/headcount"
+                >github.com/NWichter/headcount</a
+              >
+              · Anchor 0.32
+            </dd>
+            <dt>Tests</dt>
+            <dd>75 program checks · 124 end-to-end app checks · CI on every push</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 ROADMAP -->
+    <section class="slide s12">
+      <div class="top">
+        <img src="img/headcount-logo.svg" alt="Headcount" /><span class="pg"
+          >12 / 13 · Roadmap</span
+        >
+      </div>
+      <p class="kicker">Roadmap</p>
+      <h2 class="h-md">What comes next.</h2>
+      <div class="road">
+        <span class="now">Now: live on devnet</span>
+        <div class="track"><i></i></div>
+        <div class="ms">
+          <div class="m">
+            <small>Next · October</small>
+            <h3>Frozen rules</h3>
+            <p>
+              Freeze program upgrades so nobody can change the rules, not even
+              us.
+            </p>
+          </div>
+          <div class="m">
+            <small>Next · November</small>
+            <h3>Mainnet pilot</h3>
+            <p>
+              Same program, real USDC: one crypto meetup, one WHU club event.
+            </p>
+          </div>
+          <div class="m">
+            <small>Then · Q1 2027</small>
+            <h3>No-show reputation</h3>
+            <p>Repeat no-shows get asked for a higher deposit.</p>
+          </div>
+          <div class="m">
+            <small>Later · Q2 2027</small>
+            <h3>Luma widget</h3>
+            <p>The headcount bar inside the pages where events already live.</p>
+          </div>
+          <div class="m">
+            <small>Later · H2 2027</small>
+            <h3>Blinks</h3>
+            <p>Commit to an event straight from a post on X (Solana Actions).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 CLOSE -->
+    <section class="slide s13 dark">
+      <div class="top">
+        <img src="img/headcount-logo-dark.svg" alt="Headcount" /><span
+          class="pg"
+          >13 / 13</span
+        >
+      </div>
+      <h2 class="big">
+        <span class="hl">Commit.</span><br /><span class="st"
+          >Or it doesn't</span
+        ><br /><span class="st">happen.</span>
+      </h2>
+      <p class="ask">
+        Looking for <b>organizers and communities</b> who want to try it.
+      </p>
+      <div class="qr">
+        <a class="box" href="https://headcount.sorevo.de"
+          ><img src="img/qr-live.svg" alt="QR code to headcount.sorevo.de"
+        /></a>
+        <p>
+          Scan to try the live demo<br /><span style="color: var(--paper)"
+            >headcount.sorevo.de</span
+          >
+        </p>
+        <a class="vid" href="https://headcount.sorevo.de/pitch/video.html"
+          >▶ Watch the 90-second demo</a
+        >
+      </div>
+      <div class="meta">
+        <p class="links">
+          <a class="live" href="https://headcount.sorevo.de"
+            ><span>Live demo</span>headcount.sorevo.de</a
+          ><a href="https://github.com/NWichter/headcount"
+            ><span>Code</span>github.com/NWichter/headcount</a
+          >
+        </p>
+        <p class="name"><b>Niklas Wichter</b><br />Superteam Germany × WHU</p>
+      </div>
+    </section>
+
+    <div class="ui">
+      <div class="prog"><i></i></div>
+      <nav class="ctl" aria-label="Slides">
+        <button type="button" data-go="-1" aria-label="Previous slide">
+          ‹
+        </button>
+        <span class="cnt">01 / 13</span>
+        <button type="button" data-go="1" aria-label="Next slide">›</button>
+        <a class="pdf" href="video.html">▶ Video</a>
+        <a href="headcount-pitch.pdf" download>PDF</a>
+        <button type="button" data-fs aria-label="Full screen">
+          Full screen
+        </button>
+      </nav>
+      <p class="hint">→ or click to continue · F full screen</p>
+    </div>
+
+    <script>
+      (function () {
+        var k = 0;
+        document.querySelectorAll(".dots i").forEach(function (d, i) {
+          d.style.setProperty("--d", i * 14 + "ms");
+          if (d.classList.contains("in"))
+            d.style.setProperty("--f", 1200 + k++ * 110 + "ms");
+        });
+
+        var q = new URLSearchParams(location.search);
+        var slides = [].slice.call(document.querySelectorAll(".slide"));
+        var one = parseInt(q.get("slide") || "", 10);
+        if (one) {
+          document.body.classList.add("single");
+          if (slides[one - 1]) slides[one - 1].classList.add("on");
+          return;
+        }
+        if (q.has("print") || q.has("all")) return;
+
+        var body = document.body,
+          cur = -1,
+          timers = [];
+        var cnt = document.querySelector(".cnt"),
+          bar = document.querySelector(".prog i");
+        var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        body.classList.add("present");
+        function fit() {
+          body.style.setProperty(
+            "--k",
+            Math.min(innerWidth / 1920, innerHeight / 1080),
+          );
+        }
+        fit();
+        addEventListener("resize", fit);
+        function pad(n) {
+          return (n < 10 ? "0" : "") + n;
+        }
+
+        function countUp(el) {
+          var to = +el.dataset.count,
+            dur = +el.dataset.dur || 1000,
+            wait = +el.dataset.delay || 0;
+          if (reduced) return;
+          el.textContent = "0";
+          timers.push(
+            setTimeout(function () {
+              var t0 = performance.now();
+              (function step(t) {
+                var p = Math.min(1, (t - t0) / dur),
+                  e = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(to * e);
+                if (p < 1 && el.closest(".slide.on"))
+                  requestAnimationFrame(step);
+                else el.textContent = to;
+              })(t0);
+            }, wait),
+          );
+        }
+
+        function show(i) {
+          i = Math.max(0, Math.min(slides.length - 1, i));
+          if (i === cur) return;
+          timers.forEach(clearTimeout);
+          timers = [];
+          if (cur >= 0) slides[cur].classList.remove("on", "play");
+          cur = i;
+          var s = slides[cur];
+          s.classList.add("on");
+          void s.offsetWidth;
+          s.classList.add("play");
+          s.querySelectorAll("[data-count]").forEach(countUp);
+          cnt.textContent = pad(cur + 1) + " / " + slides.length;
+          bar.style.width = ((cur + 1) / slides.length) * 100 + "%";
+          if (location.hash !== "#" + (cur + 1))
+            history.replaceState(null, "", "#" + (cur + 1));
+          try { sessionStorage.setItem("hc-deck", "#" + (cur + 1)); } catch (_) {}
+        }
+        function go(d) {
+          show(cur + d);
+          body.classList.add("moved");
+        }
+        function fs() {
+          if (document.fullscreenElement) document.exitFullscreen();
+          else if (document.documentElement.requestFullscreen)
+            document.documentElement.requestFullscreen();
+        }
+
+        var idle;
+        function moved() {
+          body.classList.add("moved");
+          body.classList.remove("idle");
+          clearTimeout(idle);
+          idle = setTimeout(function () {
+            body.classList.add("idle");
+          }, 2600);
+        }
+        addEventListener("mousemove", moved);
+
+        addEventListener("keydown", function (e) {
+          if (e.metaKey || e.ctrlKey || e.altKey) return;
+          var key = e.key;
+          if (
+            key === "ArrowRight" ||
+            key === "PageDown" ||
+            key === " " ||
+            key === "Enter"
+          ) {
+            e.preventDefault();
+            go(1);
+          } else if (
+            key === "ArrowLeft" ||
+            key === "PageUp" ||
+            key === "Backspace"
+          ) {
+            e.preventDefault();
+            go(-1);
+          } else if (key === "Home") show(0);
+          else if (key === "End") show(slides.length - 1);
+          else if (key === "f" || key === "F") fs();
+        });
+        document.querySelector(".ctl").addEventListener("click", function (e) {
+          var b = e.target.closest("button");
+          if (!b) return;
+          e.stopPropagation();
+          if (b.hasAttribute("data-fs")) fs();
+          else go(+b.dataset.go);
+        });
+        addEventListener("click", function (e) {
+          if (e.button !== 0 || e.target.closest("a,button,.ctl")) return;
+          if (String(getSelection())) return;
+          go(e.clientX < innerWidth / 3 ? -1 : 1);
+        });
+        var tx = null;
+        addEventListener(
+          "touchstart",
+          function (e) {
+            tx = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+        addEventListener("touchend", function (e) {
+          if (tx === null) return;
+          var dx = e.changedTouches[0].clientX - tx;
+          tx = null;
+          if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+        });
+        addEventListener("hashchange", function () {
+          show((parseInt(location.hash.slice(1), 10) || 1) - 1);
+        });
+        show((parseInt(location.hash.slice(1), 10) || 1) - 1);
+        idle = setTimeout(function () {
+          body.classList.add("idle");
+        }, 3500);
+        setTimeout(function () {
+          body.classList.add("moved");
+        }, 9000);
+        if (innerWidth < innerHeight && innerWidth < 800) {
+          var hint = document.querySelector(".hint");
+          hint.textContent = "Turn your phone sideways, or open the PDF";
+          hint.classList.add("keep");
+        }
+      })();
+    </script>
+  </body>
+</html>

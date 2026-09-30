@@ -1,0 +1,10 @@
+.anchor
+.DS_Store
+# Build output stays out, except the IDL and types the app and tests read
+target/*
+!target/idl/
+!target/types/
+**/*.rs.bk
+node_modules
+test-ledger
+.yarn

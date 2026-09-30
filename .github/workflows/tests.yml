@@ -1,0 +1,48 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build the program (Anchor 0.32.1)
+        run: |
+          docker run --rm -v "$PWD/anchor:/workdir" -w /workdir \
+            solanafoundation/anchor:v0.32.1 anchor build
+
+      - name: Install the Solana CLI
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/v4.3.0/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> "$GITHUB_PATH"
+
+      - name: Start a local validator with the program
+        run: |
+          solana-test-validator --reset --quiet --limit-ledger-size 50000000 \
+            --deactivate-feature B8JJXCy5amZyWG9r7EnUYLwzXSXTxG7GZ1qZ1qggo83g \
+            --bpf-program 9NeaXRkbU4Jxsmh2aJyN74gxRoAR7fYupV68FEzDH6KH anchor/target/deploy/headcount.so &
+          for i in $(seq 1 60); do
+            solana cluster-version -u http://127.0.0.1:8899 >/dev/null 2>&1 && break
+            sleep 2
+          done
+          solana cluster-version -u http://127.0.0.1:8899
+
+      - name: Program checks
+        run: npm test
+
+      - name: End-to-end app checks
+        run: npm run app:smoke

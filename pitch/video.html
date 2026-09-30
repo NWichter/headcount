@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Headcount · Demo video</title>
+    <meta
+      name="description"
+      content="90-second demo of Headcount: real transactions on a local validator, the same program that runs live on Solana devnet."
+    />
+    <meta property="og:title" content="Headcount · Demo video" />
+    <meta
+      property="og:image"
+      content="https://headcount.sorevo.de/pitch/og.png"
+    />
+    <link rel="icon" href="/brand/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f2ede1;
+        --ink: #12110f;
+        --go: #b9f43c;
+        --go-ink: #0f1a00;
+        --muted: #a09a8b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      body {
+        background: var(--ink);
+        color: var(--paper);
+        font:
+          600 18px/1.4 "Bricolage Grotesque",
+          system-ui,
+          sans-serif;
+        background-image: radial-gradient(
+          circle at 1.5px 1.5px,
+          rgba(242, 237, 225, 0.07) 1.5px,
+          transparent 0
+        );
+        background-size: 34px 34px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 28px;
+      }
+      header img {
+        height: 30px;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .back {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--go);
+        color: var(--go-ink);
+        border: 3px solid var(--go);
+        border-radius: 999px;
+        padding: 10px 18px;
+        font:
+          700 15px/1 "JetBrains Mono",
+          monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .back:hover {
+        background: #cdfa6b;
+      }
+      .back span {
+        font-size: 20px;
+        line-height: 0.8;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 28px 28px;
+        gap: 18px;
+      }
+      video {
+        width: min(100%, calc((100vh - 170px) * 16 / 9));
+        aspect-ratio: 16/9;
+        background: #000;
+        border-radius: 18px;
+        box-shadow: 10px 10px 0 var(--go);
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        text-align: center;
+      }
+      p a {
+        color: var(--paper);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="back" id="back" href="./"><span>←</span> Back to the pitch</a>
+      <a href="./"><img src="img/headcount-logo-dark.svg" alt="Headcount" /></a>
+    </header>
+    <main>
+      <video
+        src="demo.mp4"
+        controls
+        autoplay
+        playsinline
+        preload="metadata"
+      ></video>
+      <p>
+        Real transactions on a local validator. The same program runs live on
+        devnet: <a href="https://headcount.sorevo.de">headcount.sorevo.de</a>
+      </p>
+    </main>
+    <script>
+      (function () {
+        var back = document.getElementById("back");
+        var slide = null;
+        try { slide = sessionStorage.getItem("hc-deck"); } catch (_) {}
+        if (slide) {
+          back.href = "./" + slide;
+          back.addEventListener("click", function (e) {
+            if (history.length > 1) {
+              e.preventDefault();
+              history.back();
+            }
+          });
+        }
+        addEventListener("keydown", function (e) {
+          if (e.key === "Escape") back.click();
+        });
+      })();
+    </script>
+  </body>
+</html>
